@@ -1,0 +1,20 @@
+name: DEPLOY PRODUÇÃO
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy-to-prod:
+    name: Deploy Produção
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+    steps:
+      - name: Clonar repositório
+        uses: actions/checkout@v3
+
+      - name: Simular Deploy Produção
+        run: echo "Deploying to $PROD_DOMAIN"
+        env:
+          PROD_DOMAIN: ${{ vars.PROD_DOMAIN }}
