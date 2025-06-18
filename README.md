@@ -1,3 +1,5 @@
+![CI Pipeline Status](https://img.shields.io/github/actions/workflow/status/betofrasson/appmonitor-pipeline/ci.yml?label=CI%20Pipeline&style=flat-square)
+
 # AppMonitor Pipeline
 
 Este repositório simula a automação de pipelines de monitoramento de aplicações web, com foco em práticas modernas de integração e entrega contínuas usando GitHub Actions.
@@ -51,3 +53,24 @@ Variáveis do repositório (vars): configuradas nas configurações do GitHub, i
 
 Segredos (secrets): usados para dados sensíveis, como chaves e senhas. São criptografados e não aparecem nos logs. `API_KEY`.
 
+
+---
+
+### Job Summaries
+O summary do workflow fornece um resumo executivo com:
+- Ambiente de execução (OS e branch)
+- Resultado de cada etapa
+- Links diretos para artefatos
+- Visão geral do status do pipeline
+
+### Logs de Debug
+Com `ACTIONS_STEP_DEBUG=true`, você obtém:
+- Informações detalhadas sobre cada etapa
+- Variáveis de ambiente e contextos
+- Tempos de execução precisos
+- Mensagens estruturadas (::warning::, ::error::)
+
+As mensagens personalizadas ajudam a:
+1. Identificar rapidamente problemas (::error::)
+2. Fornecer avisos sobre limitações (::warning::)
+3. Destacar informações importantes (::notice::)
