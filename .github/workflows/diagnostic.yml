@@ -1,0 +1,30 @@
+name: DIAGNÓSTICO
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  validate-env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar variaveis
+        run: |
+          # Verifica variáveis
+          MISSING=""
+          [ -z "${{ vars.APP_ENV }}" ] && MISSING+="APP_ENV " && echo "::error::APP_ENV missing"
+          [ -z "${{ secrets.API_KEY }}" ] && MISSING+="API_KEY " && echo "::error::API_KEY missing"
+          [ -n "$MISSING" ] && echo "MISSING=$MISSING" >> $GITHUB_OUTPUT && exit 1
+          echo "SUCESSO. Todas variáveis OK"
+
+      - name: Sumário
+        if: always()
+        run: |
+          echo "### Resultado" > $GITHUB_STEP_SUMMARY
+          if ${{ steps.check.outcome == 'failure' }}; then
+            echo "ERRO!!! Faltam: ${{ steps.check.outputs.MISSING }}" >> $GITHUB_STEP_SUMMARY
+            echo "Corrija em: Settings -> Secrets/Variables" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "SUCESSO. Configuração válida" >> $GITHUB_STEP_SUMMARY
+          fi
