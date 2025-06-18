@@ -10,16 +10,14 @@ jobs:
       APP_ENV: ${{ vars.APP_ENV }}
     steps:
       - name: Exibir APP_ENV
-        run:
-          echo "Ambiente: $APP_ENV"
+        run: echo "Ambiente: $APP_ENV"
 
   use-vars:
     name: Usar contexto vars
     runs-on: ubuntu-latest
     steps:
       - name: Exibir SUPPORT_EMAIL
-        run:
-          echo "Suporte: ${{ vars.SUPPORT_EMAIL }}"
+        run: echo "Suporte: ${{ vars.SUPPORT_EMAIL }}"
 
   use-secret:
     name: Usar segredo do repositório
