@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: CI PIPELINE
 
 env:
   ACTIONS_STEP_DEBUG: true
