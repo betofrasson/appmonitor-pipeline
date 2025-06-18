@@ -1,0 +1,34 @@
+name: VARS E SECRETS
+on:
+  workflow_dispatch:
+
+jobs:
+  use-env:
+    name: Usar contexto env
+    runs-on: ubuntu-latest
+    env:
+      APP_ENV: ${{ vars.APP_ENV }}
+    steps:
+      - name: Exibir APP_ENV
+        run:
+          echo "Ambiente: $APP_ENV"
+
+  use-vars:
+    name: Usar contexto vars
+    runs-on: ubuntu-latest
+    steps:
+      - name: Exibir SUPPORT_EMAIL
+        run:
+          echo "Suporte: ${{ vars.SUPPORT_EMAIL }}"
+
+  use-secret:
+    name: Usar segredo do repositório
+    runs-on: ubuntu-latest
+    steps:
+      - name: Autenticacao com Secret
+        run: |
+          if [ -z "${{ secrets.API_KEY }}" ]; then
+            echo "API_KEY não definido"
+            exit 1
+          fi
+          echo "Secret API_KEY definido"

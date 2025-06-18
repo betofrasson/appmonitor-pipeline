@@ -37,3 +37,17 @@ As **tags** marcam versões estáveis e importantes do projeto. Com elas, é pos
 
 Exemplo de versão:
 - `v0.1.0`: versão inicial contendo o script de verificação e documentação.
+
+
+---
+
+### Variáveis e segredos no GitHub Actions
+
+Neste projeto usamos três formas de configurar dados nos workflows:
+
+Variáveis de ambiente (env): definidas diretamente no workflow, úteis para valores simples e temporários. `APP_ENV=dev`.
+
+Variáveis do repositório (vars): configuradas nas configurações do GitHub, ideais para informações constantes reutilizáveis, como `SUPPORT_EMAIL`.
+
+Segredos (secrets): usados para dados sensíveis, como chaves e senhas. São criptografados e não aparecem nos logs. `API_KEY`.
+
